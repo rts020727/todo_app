@@ -1,0 +1,37 @@
+<div class="container">
+  <%= render "layouts/errors", model: @category %>
+  <div class="row">
+    <div class="col-lg-4">
+      <h3 class="text-center">投稿フォーム</h3>
+      <%= form_with model: @category, url: categories_path, method: :post, local: true do |f| %>
+        <%= render "form", f: f %>
+      <% end %>
+    </div>
+    <div class="col-lg-6">
+      <h3 class="text-center">todoリスト一覧</h3>
+      <table class="table">
+        <tr>
+          <th>カテゴリー名</th>
+          <th>todoリスト</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+        <% @categories.each do |category| %>
+            <td><%= category.name %></td>
+            <td>
+              <ul>
+                <% category.lists.each do |list| %>
+                  <li><%= list.content %></li>
+                <% end %>
+              </ul>
+            </td>
+            <td><%= link_to "編集", edit_category_path(category), class: "btn btn-success" %></td>
+            <td><%= link_to "削除", category_path(category), method: :delete, class: "btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+

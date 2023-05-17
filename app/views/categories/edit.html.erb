@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5">
+      <%= form_with model: @category, url: category_path(@category), method: :patch, local: true do |f| %>
+        <%= render "form", f: f %>
+      <% end %>
+    </div>
+  </div>
+</div>

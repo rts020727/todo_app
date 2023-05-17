@@ -1,0 +1,16 @@
+<table class="table table-borderless">
+  <tr>
+    <td><%= f.label :name, "カテゴリー", class: 'form-label' %></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <%= f.fields_for :lists do |l| %>
+  <tr>
+    <td><%= l.label :content, "TODO", class: 'form-label' %></td>
+    <td><%= l.text_field :content %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td></td>
+    <td><%= f.submit '投稿', class: "btn btn-info" %></td>
+  </tr>
+</table>
